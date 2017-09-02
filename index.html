@@ -226,33 +226,7 @@
   
   </section>
 
-<style>
-div.fixed {
-    position: fixed;
-    bottom: 0;
-   
-   z-index: +8;
-    border: 3px solid #73AD21;
-    opacity: 10%;
-}
-.centered {
-    background-color: #eee;
-    position: fixed;
-    width: 95%;
-    text-align: center;
-    top: 5%;
-    left: 50%;
-    padding: 5px;
-    transform: translate(-50%, 0);
-    z-index: 2;
-}
-</style>
 
-     <a href="#regc" id="close"  class="centered" onclick="showReg()" style="top:0%;height: 5%;background-color:black ">Close</a>
-
- 
-      <iframe id="regc" class="centered" src="https://docs.google.com/forms/d/e/1FAIpQLSfGFkbCy8dEI5bdX-SF8GuCS59nEwcNh3v2zSOmhekC3_Ji8Q/viewform?embedded=true"
-        frameborder="1"  style="height: 95vh;">Loading...</iframe>
 
 
 
@@ -559,6 +533,38 @@ div.fixed {
   </footer>
   <!-- #footer -->
 
+  <style>
+div.fixed {
+    position: fixed;
+    bottom: 0;
+   
+   z-index: +8;
+    border: 3px solid #73AD21;
+    opacity: 10%;
+}
+.centered {
+    background-color: #eee;
+    position: fixed;
+    width: 95%;
+    text-align: center;
+    top: 5%;
+    left: 50%;
+    padding: 5px;
+    transform: translate(-50%, 0);
+    z-index: 99;
+}
+
+.no-scroll {
+   position: fixed;
+}
+</style>
+
+     <a href="#regc" id="close"  class="centered" onclick="showReg()" style="top:0%;height: 5%;background-color:black ">Close</a>
+
+ 
+      <iframe id="regc" class="centered" src="https://docs.google.com/forms/d/e/1FAIpQLSfGFkbCy8dEI5bdX-SF8GuCS59nEwcNh3v2zSOmhekC3_Ji8Q/viewform?embedded=true"
+        frameborder="1"  style="height: 95vh;">Loading...</iframe>
+
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- Required JavaScript Libraries -->
@@ -608,6 +614,8 @@ div.fixed {
 
         function showReg(x) {
 
+
+
           var query=$('#regc');
 
           var v = query.is(':visible');
@@ -615,10 +623,12 @@ div.fixed {
         if ( v) {
           query.hide();
           hideClose(true);
+              $('html, body').toggleClass('no-scroll');
         }
         else {
          query.show();
          hideClose(false);
+             $('html, body').toggleClass('no-scroll');
         }
       }
 
@@ -630,6 +640,7 @@ div.fixed {
          $('#close').show();
       }
 
+$('html, body').toggleClass('no-scroll');
       hideClose();
 
     showReg(false);
